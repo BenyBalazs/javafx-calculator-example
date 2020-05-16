@@ -67,7 +67,7 @@ public class CalculatorController {
     @FXML
     public void dotPressed(){
         System.out.println("Dot Pressed");
-        if(!display.getText().endsWith(".")){
+        if(!display.getText().contains(".")){
             display.setText(display.getText() + ".");
         }
     }
