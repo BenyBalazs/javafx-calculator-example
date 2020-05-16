@@ -44,7 +44,7 @@ public class CalculatorController {
            }
            double number2 = Double.parseDouble(display.getText());
            double result = calculator.calculate(number1, number2, operator);
-           display.setText(String.format("%1$,.2f", result));
+           display.setText(String.format("%1$,.10f", result));
            operator = "";
         } else {
             if (! operator.isEmpty()) {
