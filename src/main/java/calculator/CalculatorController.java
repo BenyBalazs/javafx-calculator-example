@@ -37,21 +37,49 @@ public class CalculatorController {
     public void processOperator(ActionEvent event) {
         String operatorPressed = ((Button) event.getSource()).getText();
         System.out.println(operatorPressed);
+
         if (operatorPressed.equals("=")) {
            if (operator.isEmpty()) {
                return;
            }
            double number2 = Double.parseDouble(display.getText());
            double result = calculator.calculate(number1, number2, operator);
-           display.setText(String.format("%.0f", result));
+           display.setText(String.format("%1$,.2f", result));
            operator = "";
         } else {
             if (! operator.isEmpty()) {
                 return;
             }
+
             number1 = Double.parseDouble(display.getText());
             operator = operatorPressed;
             startNumber = true;
+        }
+    }
+    @FXML
+    public void clearMemory(){
+        operator = "";
+        number1 = 0;
+        display.setText("0");
+        startNumber = true;
+        System.out.println("Clear Pressed");
+    }
+    @FXML
+    public void dotPressed(){
+        System.out.println("Dot Pressed");
+        if(!display.getText().endsWith(".")){
+            display.setText(display.getText() + ".");
+        }
+    }
+    @FXML
+    public void plusMinus(){
+
+        System.out.println("Plus minus change!");
+        if(display.getText().startsWith("-")){
+            display.setText(display.getText().replaceAll("-","" ));
+        }
+        else if(!display.getText().startsWith("-")){
+            display.setText("-" + display.getText());
         }
     }
 
